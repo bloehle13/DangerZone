@@ -1,0 +1,28 @@
+body{
+  margin-left: 0px;
+  margin-top: 0px;
+}
+
+div{
+   background: blue;
+}
+
+#divY{
+   height: 0px;
+   width: 10px;
+}
+
+#divX{
+   height: 10px;
+   width: 10px;
+}
+
+#bar1{
+   height: 300px;
+   width: 300px;
+}
+
+footer{
+   position: fixed;
+   bottom: 0px;
+}
