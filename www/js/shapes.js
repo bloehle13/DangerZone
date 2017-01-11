@@ -1,3 +1,7 @@
+/* Made by Brandon Loehle
+*  brandon.loehle@quinnipiac.edu
+*/
+
 var shapes = [];
 var shapeNames = ['rectRed', 'rectBlue', 'rectGreen', 'rectYellow', 'rectPurple', 'rectTeal', 'rectOrange'];
 var xLocations = [0, window.innerWidth / 2 - 25, window.innerWidth-50];

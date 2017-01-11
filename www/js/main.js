@@ -1,3 +1,8 @@
+/* Made by Brandon Loehle
+*  brandon.loehle@quinnipiac.edu
+*/
+
+
 var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 var dangerZoner;
 var levelbar;

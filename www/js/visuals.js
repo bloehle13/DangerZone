@@ -1,3 +1,7 @@
+/* Made by Brandon Loehle
+*  brandon.loehle@quinnipiac.edu
+*/
+
 /*Flashes red around the danger zone
 */
 function madeMistake(){

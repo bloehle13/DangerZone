@@ -1,3 +1,7 @@
+/* Made by Brandon Loehle
+*  brandon.loehle@quinnipiac.edu
+*/
+
 /*Main logic function. Handles scoring, removal of shapes, and UI indicators
 */
 function checkInZone(){
