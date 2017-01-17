@@ -49,6 +49,7 @@ function loadGame(){
 /*Flashes red around the danger zone
 */
 function madeMistake(){
+  playSound('fail');
 
   //flashes image
   var mistake = game.add.sprite(0, window.innerHeight/2-100, 'error');

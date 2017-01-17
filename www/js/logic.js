@@ -16,6 +16,7 @@ function checkInZone(){
 
       //if the shape has been inside danger zone for 2 seconds
       if(rect.timeInZone >= 120){
+        playSound('success');
         destroyShape(i);
         levelBar.width += Math.log10(75 * level) * 75;
       }

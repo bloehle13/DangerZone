@@ -26,6 +26,9 @@ function preload() {
   game.load.bitmapFont('titleFont', 'assets/titleFont.png', 'assets/titleFont.fnt');
   game.load.bitmapFont('font', 'assets/font.png', 'assets/font.fnt');
   game.load.bitmapFont('redFont', 'assets/redFont.png', 'assets/redFont.fnt');
+  game.load.audio('music', 'assets/arcadeMusic.mp3');
+  game.load.audio('success', 'assets/successSound.wav');
+  game.load.audio('fail', 'assets/failSound.wav');
   game.input.onTap.add(onTap, this);
   game.input.onHold.add(onHold, this);
   game.input.holdRate = 500;
@@ -35,6 +38,7 @@ function preload() {
 */
 function create(){
     loadGame();
+    loadMusic();
     openMenu();
 }
 
