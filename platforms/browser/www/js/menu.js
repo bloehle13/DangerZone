@@ -13,6 +13,14 @@ function openMenu(){
 
   addToArray(menuItems, game.add.bitmapText(0, game.world.centerY, 'font', 'Tap to Play', 25));
   menuItems[2].x = game.world.centerX - (menuItems[2].width / 2);
+
+  addToArray(menuItems, game.add.bitmapText(0, window.innerHeight, 'font', 'Highscore: ' + getHighscore(), 20));
+  menuItems[3].x = game.world.centerX - (menuItems[3].width / 2);
+  menuItems[3].y = window.innerHeight - menuItems[3].height * 3;
+
+  addToArray(menuItems, game.add.bitmapText(0, window.innerHeight, 'font', 'Game by Brandon Loehle (C)2017', 15));
+  menuItems[4].x = game.world.centerX - (menuItems[4].width / 2);
+  menuItems[4].y = window.innerHeight - menuItems[4].height;
 }
 
 /*Flash "Tap to Play"

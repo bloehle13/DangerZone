@@ -6,6 +6,8 @@ var gameOverItems = [];
 /*Loads the game over screen
 */
 function gameOver(){
+  setHighscore();
+
   addToArray(gameOverItems, game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'blackBackground'));
 
   addToArray(gameOverItems, game.add.bitmapText(game.world.centerX, game.world.centerY - 100, 'redFont', 'Game Over', 40));

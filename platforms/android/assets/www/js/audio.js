@@ -4,7 +4,6 @@
 var backgroundMusic;
 var successSound;
 var failSound;
-var gameOverSound;
 
 /*Load in music
 */
@@ -12,14 +11,13 @@ function loadMusic(){
   backgroundMusic = game.add.audio('music');
   successSound = game.add.audio('success');
   failSound = game.add.audio('fail');
-  gameOverSound = game.add.audio('gameOver');
 
   //some sound clips are too loud, lower them
-  gameOverSound.volume = 0.5;
-  backgroundMusic.volume = 0.25;
+  failSound.volume = 0.9;
+  backgroundMusic.volume = 0.8;
 
-  backgroundMusic.play();
   backgroundMusic.loop = true;
+  backgroundMusic.play();
 }
 
 /*Decides which sound effect to play
@@ -31,9 +29,6 @@ function playSound(sound){
       break;
     case 'fail':
       failSound.play();
-      break;
-    case 'gameOver':
-      gameOverSound.play();
       break;
     default:
       break;
