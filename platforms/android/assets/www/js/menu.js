@@ -6,21 +6,30 @@ var menuItems = [];
 /*Loads the menu
 */
 function openMenu(){
-  addToArray(menuItems, game.add.sprite(0, 0, 'blackBackground'));
-  menuItems[0].width = window.innerWidth;
-  menuItems[0].height = window.innerHeight;
+  addToArray(menuItems, game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'blackBackground'));
 
-  addToArray(menuItems, game.add.text(game.world.centerX, game.world.centerY - 100, 'Danger Zone', {
-    font: "50px Impact",
-    fill: "#ffffff"
-  }));
+  addToArray(menuItems, game.add.bitmapText(0, game.world.centerY - 100, 'titleFont', 'Danger Zone', 30));
   menuItems[1].x = game.world.centerX - (menuItems[1].width / 2);
 
-  addToArray(menuItems, game.add.text(game.world.centerX, game.world.centerY, 'Tap to Play', {
-    font: "25px Impact",
-    fill: "#ffffff"
-  }));
+  addToArray(menuItems, game.add.bitmapText(0, game.world.centerY, 'font', 'Tap to Play', 25));
   menuItems[2].x = game.world.centerX - (menuItems[2].width / 2);
+}
+
+/*Flash "Tap to Play"
+*/
+var timer = 0;
+function flash(text){
+    timer += game.time.elapsed;
+    if ( timer >= 750 ){
+      timer = 0;
+      text.visible = !text.visible;
+    }
+}
+
+/*Scroll the menu background
+*/
+function scrollMenuBackground(){
+  menuItems[0].tilePosition.y += Math.log10(75 * level);
 }
 
 /*Removes menu elements

@@ -23,7 +23,12 @@ function preload() {
   game.load.image('levelBar', 'assets/levelBar.png');
   game.load.image('shapeSuccessMeter', 'assets/shapeSuccessMeter.png');
   game.load.image('blackBackground', 'assets/blackBackground.png');
+  game.load.bitmapFont('titleFont', 'assets/titleFont.png', 'assets/titleFont.fnt');
+  game.load.bitmapFont('font', 'assets/font.png', 'assets/font.fnt');
+  game.load.bitmapFont('redFont', 'assets/redFont.png', 'assets/redFont.fnt');
   game.input.onTap.add(onTap, this);
+  game.input.onHold.add(onHold, this);
+  game.input.holdRate = 500;
 }
 
 /*Create initial game scenario, set global variable values
@@ -49,9 +54,19 @@ function update() {
       generateShape();
     }
   }
+  if(menuOpen){
+    fixFontSize(menuItems);
+    scrollMenuBackground();
+    flash(menuItems[2]);
+  }
+  else if(gameIsOver){
+    fixFontSize(gameOverItems);
+    flash(gameOverItems[3]);
+    scrollGameOverBackground();
+  }
 }
 
-/*Event handler
+/*Event handlers
 */
 function onTap() {
   if(menuOpen){
@@ -60,10 +75,16 @@ function onTap() {
     menuOpen = false;
   }
   else if(gameIsOver){
-    clearGameOver();
-    restartGame();
+
   }
   else{
     moveShape(game.input.x);
+  }
+}
+
+function onHold(){
+  if(gameIsOver){
+    clearGameOver();
+    restartGame();
   }
 }

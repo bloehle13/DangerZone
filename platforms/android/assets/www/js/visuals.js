@@ -9,9 +9,13 @@ var textLevel;
 var shapeSuccessMeterLeft;
 var shapeSuccessMeterMiddle;
 var shapeSuccessMeterRight;
+var background;
 /*Loads the inital game state
 */
 function loadGame(){
+  //load background
+  background = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'blackBackground');
+
   //add danger zone and fill it to screen width
   dangerZone = game.add.sprite(0, window.innerHeight/2-100, 'dangerZone');
   dangerZone.width = window.innerWidth;
@@ -33,16 +37,13 @@ function loadGame(){
   shapeSuccessMeterRight.width = window.innerWidth / 3;
 
   //add and center needed text
-  textScore = game.add.text(game.world.centerX, 0, 'X    X    X', {
-      font: "50px Impact",
-      fill: "#ff0044"
-  });
+  textScore = game.add.bitmapText(0, 5, 'redFont', 'X    X    X', 30)
+  if(textScore.width >= window.innerWidth){
+    textScore.fontSize -= 5;
+  }
   textScore.x = game.world.centerX - (textScore.width/2);
 
-  textLevel = game.add.text(0, 55, "Level: " + level, {
-      font: "30px Impact",
-      fill: "#ffffff"
-  });
+  textLevel =   game.add.bitmapText(0, 55, 'font', 'Level: ' + level, 25)
   textLevel.x = game.world.centerX - (textLevel.width/2);
 }
 /*Flashes red around the danger zone
@@ -105,6 +106,12 @@ function resetShapeSuccessMeter(x){
   }
 }
 
+/*Scrolls the background
+*/
+function scrollBackground(speed){
+  background.tilePosition.y += speed;
+}
+
 /*Change the height of each success meter given how long that shape has been in the danger zone
 * @param x = x coordinate of shape
 * @param timeInZone = how long shape has been in the danger zone
@@ -140,6 +147,18 @@ function updateShapeSuccessMeter(x, timeInZone){
           resetShapeSuccessMeter(x);
           success();
         }
+    }
+  }
+}
+
+/*Self correcting font size function
+*/
+function fixFontSize(texts){
+  //start at 1 to skip the background, that is not text
+  for(var i = 1; i < texts.length; i++){
+    if(texts[i].width > window.innerWidth){
+      texts[i].fontSize -= 2;
+      texts[i].x = game.world.centerX - (texts[i].width / 2);
     }
   }
 }

@@ -22,6 +22,7 @@ function initalSpawn(){
 /*Generates a shape with a speed and tap rate, stores it in global array shapes
 */
 function generateShape(){
+
   //can only handle 3 shapes, per game rules
   if(shapes.length < 3){
     var index = Math.random() * xLocations.length;
@@ -40,11 +41,15 @@ function generateShape(){
     shape.timeInZone = 0;
     shapes.push(shape);
   }
+
 }
 
 /*Constantly make each shape rise by its defined speed
 */
 function updateShape(){
+  //always scroll the background by the current speed
+  scrollBackground(Math.log10(75 * level));
+
   for(var i = 0; i < shapes.length; i++){
 
     //only move shapes that exist

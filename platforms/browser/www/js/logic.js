@@ -10,14 +10,14 @@ function checkInZone(){
 
     //increase scoring, shape is inside danger zone
     if(rect.top >= dangerZone.top && rect.bottom <= dangerZone.bottom){
-      levelBar.width += 3;
+      levelBar.width += 0.2;
       rect.timeInZone++;
       updateShapeSuccessMeter(rect.x, rect.timeInZone);
 
       //if the shape has been inside danger zone for 2 seconds
       if(rect.timeInZone >= 120){
         destroyShape(i);
-        levelBar.width += (window.innerWidth / 4);
+        levelBar.width += Math.log10(75 * level) * 75;
       }
 
       //if the width of the progress bar exceeds the width of the device
