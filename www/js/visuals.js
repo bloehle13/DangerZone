@@ -1,7 +1,9 @@
 /* Made by Brandon Loehle
 *  brandon.loehle@quinnipiac.edu
 */
+var timer;
 var dangerZoner;
+var textTutorial;
 var levelBar;
 var textScore;
 var level;
@@ -13,6 +15,10 @@ var background;
 /*Loads the inital game state
 */
 function loadGame(){
+  if(isTutorialDone() === null){
+    resetTutorial();
+  }
+
   //load background
   background = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'blackBackground');
 
@@ -35,6 +41,9 @@ function loadGame(){
   shapeSuccessMeterRight = game.add.sprite(tapZone2, dangerZone.bottom, 'shapeSuccessMeter');
   shapeSuccessMeterRight.height = 0;
   shapeSuccessMeterRight.width = window.innerWidth / 3;
+
+  textTutorial = game.add.bitmapText(game.world.centerX, game.world.centerY + 200, 'redFont', ' ', 13);
+  textTutorial.x = game.world.centerX - (textTutorial.width/2);
 
   //add and center needed text
   textScore = game.add.bitmapText(0, 5, 'redFont', 'X    X    X', 30)
@@ -162,6 +171,12 @@ function fixFontSize(texts){
       texts[i].x = game.world.centerX - (texts[i].width / 2);
     }
   }
+}
+
+/*Handles the reset tutorial button
+*/
+function onClick(){
+
 }
 
 /*Sets every sprite and aspect of the game to its inital setup

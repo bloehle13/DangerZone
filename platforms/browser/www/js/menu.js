@@ -2,6 +2,7 @@
 *  brandon.loehle@quinnipiac.edu
 */
 var menuItems = [];
+var resetTutorial;
 
 /*Loads the menu
 */
@@ -21,6 +22,22 @@ function openMenu(){
   addToArray(menuItems, game.add.bitmapText(0, window.innerHeight, 'font', 'Game by Brandon Loehle (C)2017', 15));
   menuItems[4].x = game.world.centerX - (menuItems[4].width / 2);
   menuItems[4].y = window.innerHeight - menuItems[4].height;
+
+  //reset tutorial
+  addToArray(menuItems, game.add.sprite(0, 0, 'button'));
+  menuItems[5].width = 200;
+  menuItems[5].height = 75;
+  menuItems[5].x = game.world.centerX - (menuItems[5].width / 2);
+  menuItems[5].inputEnabled = true;
+  menuItems[5].events.onInputDown.add(listener, this);
+}
+
+/*For reset tutorial button
+*/
+function listener(){
+  resetTutorial();
+  console.log(isTutorialDone());
+  alert('Tutorial reset');
 }
 
 /*Flash "Tap to Play"
@@ -55,6 +72,7 @@ function clearMenu(){
     //must decrement i to avoid skipping elements in array
     i--;
 
+    menuOpen = false;
   }
 }
 

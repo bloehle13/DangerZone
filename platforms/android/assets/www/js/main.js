@@ -29,6 +29,7 @@ function preload() {
   game.load.audio('music', 'assets/arcadeMusic.mp3');
   game.load.audio('success', 'assets/successSound.wav');
   game.load.audio('fail', 'assets/failSound.wav');
+  game.load.image('button', 'assets/resetTutorial.png');
   game.input.onTap.add(onTap, this);
   game.input.onHold.add(onHold, this);
   game.input.holdRate = 500;
@@ -52,10 +53,16 @@ function startGame(){
 */
 function update() {
   if(!gameIsOver){
-    updateShape();
-    checkInZone();
-    if(gameHasBegun){
-      generateShape();
+    if(!isTutorialDone() && !menuOpen){
+      console.log('tut');
+      tutorial();
+    }
+    else if(isTutorialDone()){
+      updateShape();
+      checkInZone();
+      if(gameHasBegun){
+        generateShape();
+      }
     }
   }
   if(menuOpen){
@@ -75,14 +82,20 @@ function update() {
 function onTap() {
   if(menuOpen){
     clearMenu();
-    initalSpawn();
+
+    if(isTutorialDone()){
+      initalSpawn();
+    }
     menuOpen = false;
+    timer = 420;
   }
   else if(gameIsOver){
 
   }
   else{
-    moveShape(game.input.x);
+    if(!tutorialTap){
+      moveShape(game.input.x);
+    }
   }
 }
 

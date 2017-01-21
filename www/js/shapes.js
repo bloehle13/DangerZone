@@ -25,6 +25,7 @@ function generateShape(){
 
   //can only handle 3 shapes, per game rules
   if(shapes.length < 3){
+    console.log(xLocations);
     var index = Math.random() * xLocations.length;
     var xCoords = xLocations[Math.floor(index)];
 
