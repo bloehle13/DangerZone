@@ -63,6 +63,9 @@
         },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.brandon.dangerzone"
+        },
+        "cordova-plugin-admobpro": {
+            "PACKAGE_NAME": "com.brandon.dangerzone"
         }
     },
     "dependent_plugins": {
@@ -70,6 +73,9 @@
             "PACKAGE_NAME": "com.brandon.dangerzone"
         },
         "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.brandon.dangerzone"
+        },
+        "cordova-plugin-extension": {
             "PACKAGE_NAME": "com.brandon.dangerzone"
         }
     }

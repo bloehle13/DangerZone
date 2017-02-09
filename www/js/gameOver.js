@@ -2,6 +2,7 @@
 *  brandon.loehle@quinnipiac.edu
 */
 var gameOverItems = [];
+var adReady = false;
 
 /*Loads the game over screen
 */
@@ -18,6 +19,15 @@ function gameOver(){
 
   addToArray(gameOverItems, game.add.bitmapText(game.world.centerX, game.world.centerY + 100, 'font', 'Press and Hold to Play Again', 16));
   gameOverItems[3].x = game.world.centerX - (gameOverItems[3].width / 2);
+
+  if(adReady){
+    showAd();
+    adReady = false;
+  }
+  else{
+    prepareAd();
+    adReady = true;
+  }
 }
 
 function scrollGameOverBackground(){
